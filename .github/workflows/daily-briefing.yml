@@ -1,0 +1,42 @@
+name: 每日简报生成
+
+on:
+  schedule:
+    - cron: "0 9 * * 1-5"   # UTC 时间 9:00 = 北京时间 17:00（工作日）
+  workflow_dispatch:          # 允许手动触发
+
+permissions:
+  contents: write              # 允许提交简报文件
+
+jobs:
+  generate-briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: 运行简报生成脚本
+        env:
+          TDOCS_API_BASE: ${{ secrets.TDOCS_API_BASE }}
+          TDOCS_TOKEN: ${{ secrets.TDOCS_TOKEN }}
+        run: |
+          python3 generate_daily_briefing.py
+      
+      - name: 提交简报文件
+        run: |
+          git config user.name "Daily Briefing Bot"
+          git config user.email "briefing-bot@example.com"
+          
+          if [ -f "partner_daily_briefing.html" ]; then
+            cp partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
+            git add partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
+            git commit -m "📋 每日简报 $(TZ=Asia/Shanghai date +%Y-%m-%d)" || echo "无变化，跳过提交"
+            git push
+          fi
