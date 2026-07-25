@@ -43,17 +43,26 @@
   .status-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 4px 12px; border-radius: 20px; }
   .status-tag.live { background: #ecfdf5; color: #059669; }
   .status-tag.cached { background: #fef3c7; color: #d97706; }
+  /* 主动防护：实时数据获取失败时的红色告警横幅 */
+  .alert-banner { display: flex; align-items: flex-start; gap: 14px; background: #fef2f2; border: 1px solid #fecaca; border-left: 6px solid #dc2626; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(220,38,38,0.08); }
+  .alert-banner-icon { font-size: 24px; line-height: 1; flex-shrink: 0; }
+  .alert-banner-body { flex: 1; }
+  .alert-banner-title { font-size: 16px; font-weight: 700; color: #b91c1c; margin-bottom: 4px; }
+  .alert-banner-desc { font-size: 13px; color: #7f1d1d; line-height: 1.7; }
+  .alert-banner-desc code { background: #fee2e2; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
 </style>
 </head>
 <body>
 <div class="container">
+
+  
 
   <div class="header">
     <h1>📋 三级库合作伙伴评估体系</h1>
     <div class="subtitle">每日数据简报</div>
     <div class="date">2026年07月25日 星期六</div>
     <div class="update-time">
-      数据获取时间：12:34 | 
+      数据获取时间：13:32 | 
       <span class="status-tag live">🔗 实时数据</span>
     </div>
   </div>

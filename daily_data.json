@@ -1,7 +1,10 @@
 {
   "date": "2026-07-25",
-  "timestamp": "2026-07-25T20:33:39.132872",
+  "timestamp": "2026-07-25T13:32:17.347616",
   "api_success": true,
+  "live_failed": false,
+  "data_source": "历史数据快照（daily_data.json）",
+  "fallback_reason": "",
   "partner_count": 114,
   "express_count": 66,
   "pre_eval": {
