@@ -52,37 +52,48 @@ LOG_DIR = os.path.join(BRIEFING_DIR, "logs")
 def fetch_records(sheet_id, limit=200):
     """
     从腾讯文档 API 获取工作表记录。
-    在工蜂 CI 中运行时，需要通过 HTTP API 调用。
-    在 CodeBuddy 沙箱中运行时，通过 MCP 工具调用。
+    - 配置了 TDOCS_API_BASE / TDOCS_TOKEN 时走 HTTP API（真实实时）。
+    - 未配置时，回退读取 live_cache/ 中由沙箱实时抓取落盘的真实记录。
+    - 再无则返回 None（由上层用 daily_data.json 快照兜底）。
     """
     import urllib.request
     import urllib.error
-    
+
     api_base = os.environ.get("TDOCS_API_BASE", "")
     token = os.environ.get("TDOCS_TOKEN", "")
-    
-    if not api_base or not token:
-        # 在沙箱环境中，返回空数据（使用手动快照）
-        return None
-    
-    url = f"{api_base}/smartsheet/list_records"
-    payload = json.dumps({
-        "file_id": FILE_ID,
-        "sheet_id": sheet_id,
-        "limit": limit
-    }).encode('utf-8')
-    
-    req = urllib.request.Request(url, data=payload, headers={
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {token}"
-    })
-    
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read())
-    except urllib.error.URLError as e:
-        print(f"  [WARN] API 调用失败: {e}")
-        return None
+
+    if api_base and token:
+        url = f"{api_base}/smartsheet/list_records"
+        payload = json.dumps({
+            "file_id": FILE_ID,
+            "sheet_id": sheet_id,
+            "limit": limit
+        }).encode('utf-8')
+        req = urllib.request.Request(url, data=payload, headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}"
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read())
+        except urllib.error.URLError as e:
+            print(f"  [WARN] API 调用失败: {e}")
+
+    # 未配置 API：尝试读取 live_cache 中真实抓取的数据
+    cache_name = {
+        "trLD8T": "pre_eval", "tqrs1H": "mid_sales", "ttKzck": "express",
+    }.get(sheet_id)
+    if cache_name:
+        cache_path = os.path.join(BRIEFING_DIR, "live_cache", f"{cache_name}.json")
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                print(f"  ✓ 从 live_cache 读取 {cache_name}：{len(data.get('records', []))} 条")
+                return data
+            except Exception as e:
+                print(f"  [WARN] live_cache 读取失败: {e}")
+    return None
 
 def load_snapshot():
     """加载上次数据快照"""
@@ -229,7 +240,7 @@ def generate_html(data, changes):
     weekday = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"][today.weekday()]
     time_str = today.strftime("%H:%M")
     
-    pre_eval = data.get("pre_eval", {"total": 118, "completed": 27, "partial": 0, "empty": 91, "coverage": 22.9})
+    pre_eval = data.get("pre_eval", {"total": 118, "completed": 22, "partial": 3, "empty": 93, "coverage": 18.6})
     mid_sales = data.get("mid_sales", {"total": 66})
     
     coverage = pre_eval["coverage"]
@@ -363,13 +374,19 @@ def generate_html(data, changes):
           <td><span class="badge green">已完成评估</span></td>
           <td><strong>{pre_eval['completed']}</strong></td>
           <td>{coverage}%</td>
-          <td>含方案能力、交付能力、培训能力、场景能力等</td>
+          <td>含方案/交付/培训/场景/代理/案例等能力项</td>
         </tr>
         <tr>
-          <td><span class="badge yellow">待评估</span></td>
+          <td><span class="badge blue">部分评估</span></td>
+          <td><strong>{pre_eval['partial']}</strong></td>
+          <td>{round(pre_eval['partial'] / pre_eval['total'] * 100, 1)}%</td>
+          <td>已录入部分能力项</td>
+        </tr>
+        <tr>
+          <td><span class="badge red">待评估</span></td>
           <td><strong>{pre_eval['empty']}</strong></td>
           <td>{round(pre_eval['empty'] / pre_eval['total'] * 100, 1)}%</td>
-          <td>已录入名称，尚未评估</td>
+          <td>仅录入名称，尚未评估</td>
         </tr>
       </table>
     </div>
@@ -446,11 +463,21 @@ def main():
     if mid_sales_records:
         print(f"  ✓ 获取到 {len(mid_sales_records.get('records', []))} 条记录")
 
+    print("\n[2.5/4] 获取极速通已签项目数据...")
+    express_records = fetch_records(SHEETS["express_projects"])
+    if express_records:
+        print(f"  ✓ 获取到 {len(express_records.get('records', []))} 条记录")
+
     # 数据分析
     print("\n[3/4] 分析数据...")
     pre_eval = analyze_pre_eval(pre_eval_records.get("records") if pre_eval_records else None, snap=snapshot)
     mid_sales = analyze_mid_sales(mid_sales_records.get("records") if mid_sales_records else None, snap=snapshot)
-    
+
+    # 真实数据来源判定：API 或 live_cache 任一取到即算实时
+    real_data = bool(pre_eval_records or mid_sales_records or express_records)
+    if real_data:
+        api_success = True
+
     print(f"  入库评估: {pre_eval['completed']}/{pre_eval['total']} 完成 ({pre_eval['coverage']}%)")
     print(f"  售中支撑: {mid_sales['total']} 条记录")
     
@@ -479,13 +506,13 @@ def main():
             "desc": "存在不配合现象，需跟进沟通。"
         })
     
-    # 当前数据（无 API 时，合作伙伴/极速通总数回退到最近一次真实快照）
+    # 当前数据（取真实数据时用真实条数，否则回退最近一次真实快照）
     current_data = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "timestamp": datetime.now().isoformat(),
         "api_success": api_success,
-        "partner_count": snapshot.get("partner_count", 114) if not api_success else 114,
-        "express_count": snapshot.get("express_count", 66) if not api_success else 66,
+        "partner_count": snapshot.get("partner_count", 114),
+        "express_count": len(express_records.get("records", [])) if express_records else snapshot.get("express_count", 66),
         "pre_eval": pre_eval,
         "mid_sales": mid_sales,
         "alerts": alerts,
