@@ -49,40 +49,93 @@ LOG_DIR = os.path.join(BRIEFING_DIR, "logs")
 # 在工蜂 CI 环境中，需配置 TDOCS_API_BASE 和 TDOCS_TOKEN 环境变量
 # ============================================================
 
-def fetch_records(sheet_id, limit=200):
-    """
-    从腾讯文档 API 获取工作表记录。
-    - 配置了 TDOCS_API_BASE / TDOCS_TOKEN 时走 HTTP API（真实实时）。
-    - 未配置时，回退读取 live_cache/ 中由沙箱实时抓取落盘的真实记录。
-    - 再无则返回 None（由上层用 daily_data.json 快照兜底）。
-    """
+def _mcp_rpc(api_base, token, payload, session_id=None):
+    """调用腾讯文档 MCP（Streamable HTTP）端点，返回 (解析后JSON, session_id)。"""
     import urllib.request
     import urllib.error
+    body = json.dumps(payload).encode("utf-8")
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+    }
+    if session_id:
+        headers["Mcp-Session-Id"] = session_id
+    req = urllib.request.Request(api_base, data=body, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            raw = resp.read().decode()
+            sid = resp.headers.get("mcp-session-id") or resp.headers.get("Mcp-Session-Id")
+            return _parse_sse_or_json(raw), sid
+    except urllib.error.HTTPError as e:
+        print(f"  [WARN] MCP 调用失败 {e.code}: {e.read().decode()[:200]}")
+        return None, None
+    except urllib.error.URLError as e:
+        print(f"  [WARN] MCP 连接失败: {e}")
+        return None, None
 
-    api_base = os.environ.get("TDOCS_API_BASE", "")
+
+def _parse_sse_or_json(raw):
+    if not raw:
+        return None
+    if "data:" in raw or "event:" in raw:
+        out = []
+        for line in raw.splitlines():
+            line = line.strip()
+            if line.startswith("data:"):
+                chunk = line[5:].strip()
+                if chunk and chunk != "[DONE]":
+                    try:
+                        out.append(json.loads(chunk))
+                    except Exception:
+                        pass
+        return out[-1] if out else None
+    try:
+        return json.loads(raw)
+    except Exception:
+        return None
+
+
+def fetch_records(sheet_id, limit=200):
+    """
+    从腾讯文档获取工作表记录，按优先级：
+    1. 配置了 TDOCS_API_BASE / TDOCS_TOKEN（个人 Token）→ 直接调用公网 MCP 端点（真正实时）。
+    2. 未配置 → 读取 live_cache/ 中由沙箱抓取落盘的真实记录。
+    3. 再无 → 返回 None（上层用 daily_data.json 快照兜底）。
+    """
+    api_base = os.environ.get("TDOCS_API_BASE", "").rstrip("/")
     token = os.environ.get("TDOCS_TOKEN", "")
 
     if api_base and token:
-        url = f"{api_base}/smartsheet/list_records"
-        payload = json.dumps({
-            "file_id": FILE_ID,
-            "sheet_id": sheet_id,
-            "limit": limit
-        }).encode('utf-8')
-        req = urllib.request.Request(url, data=payload, headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {token}"
-        })
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.loads(resp.read())
-        except urllib.error.URLError as e:
-            print(f"  [WARN] API 调用失败: {e}")
+        # 1) initialize 握手（捕获 session id）
+        init = {"jsonrpc": "2.0", "id": 1, "method": "initialize",
+                "params": {"protocolVersion": "2024-11-05", "capabilities": {},
+                           "clientInfo": {"name": "partner-briefing", "version": "1.0"}}}
+        init_res, sid = _mcp_rpc(api_base, token, init)
+        if not init_res or "result" not in init_res:
+            print("  [WARN] MCP initialize 失败，回退 live_cache")
+        else:
+            # 2) tools/call smartsheet_list_records
+            call = {"jsonrpc": "2.0", "id": 2, "method": "tools/call",
+                    "params": {"name": "smartsheet_list_records",
+                               "arguments": {"file_id": FILE_ID, "sheet_id": sheet_id, "limit": limit}}}
+            res, _ = _mcp_rpc(api_base, token, call, session_id=sid)
+            if res and "result" in res:
+                for c in res["result"].get("content", []):
+                    if c.get("type") == "text":
+                        try:
+                            data = json.loads(c["text"])
+                            if "records" in data:
+                                return data
+                        except Exception:
+                            pass
+                # 部分实现把结果直接放在 result 顶层
+                if "records" in res.get("result", {}):
+                    return res["result"]
+            print("  [WARN] MCP 返回结构异常，回退 live_cache")
 
-    # 未配置 API：尝试读取 live_cache 中真实抓取的数据
-    cache_name = {
-        "trLD8T": "pre_eval", "tqrs1H": "mid_sales", "ttKzck": "express",
-    }.get(sheet_id)
+    # 回退：live_cache
+    cache_name = {"trLD8T": "pre_eval", "tqrs1H": "mid_sales", "ttKzck": "express"}.get(sheet_id)
     if cache_name:
         cache_path = os.path.join(BRIEFING_DIR, "live_cache", f"{cache_name}.json")
         if os.path.exists(cache_path):
