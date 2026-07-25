@@ -56,3 +56,16 @@ jobs:
               echo "✅ 主动防护未触发：实时数据获取成功。"
             fi
           fi
+
+      - name: 推送企业微信（每日摘要 + 主动防护告警）
+        if: always()
+        continue-on-error: true
+        env:
+          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        run: |
+          if [ -z "$WECOM_WEBHOOK" ]; then
+            echo "未配置 WECOM_WEBHOOK，跳过企业微信推送"
+            exit 0
+          fi
+          python3 push_wecom.py
+
