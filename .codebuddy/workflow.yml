@@ -1,0 +1,57 @@
+# 三级库合作伙伴评估体系 - 每日简报
+# 
+# 定时触发规则：每个工作日下午 17:00 (北京时间)
+# Cron: 0 17 * * 1-5
+#
+# 此流水线会：
+# 1. 拉取最新代码
+# 2. 运行简报生成脚本
+# 3. 将生成的 HTML 提交回仓库
+# 4. 简报文件可在仓库中直接查看
+
+name: 每日简报生成
+
+on:
+  schedule:
+    - cron: "0 17 * * 1-5"  # 工作日每天下午5点
+  workflow_dispatch:          # 允许手动触发
+
+jobs:
+  generate-briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: 检出代码
+        uses: checkout@v1
+      
+      - name: 设置 Python
+        uses: setup-python@v1
+        with:
+          python-version: "3.11"
+      
+      - name: 运行简报生成脚本
+        env:
+          TDOCS_API_BASE: ${{ secrets.TDOCS_API_BASE }}
+          TDOCS_TOKEN: ${{ secrets.TDOCS_TOKEN }}
+        run: |
+          python3 generate_daily_briefing.py
+      
+      - name: 提交简报文件
+        run: |
+          git config user.name "Daily Briefing Bot"
+          git config user.email "briefing-bot@example.com"
+          
+          # 如果简报文件有变化则提交
+          if [ -f "partner_daily_briefing.html" ]; then
+            cp partner_daily_briefing.html "archive/briefing_$(date +%Y%m%d).html"
+            git add partner_daily_briefing.html "archive/briefing_$(date +%Y%m%d).html"
+            git commit -m "📋 每日简报 $(date +%Y-%m-%d)" || echo "无变化，跳过提交"
+            git push
+          fi
+      
+      - name: 归档日志
+        if: always()
+        run: |
+          mkdir -p logs
+          echo "[$(date '+%Y-%m-%d %H:%M:%S')] 简报生成完成" >> logs/briefing.log

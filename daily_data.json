@@ -1,0 +1,33 @@
+{
+  "date": "2026-07-25",
+  "timestamp": "2026-07-25T15:05:43.398802",
+  "api_success": false,
+  "partner_count": 114,
+  "express_count": 66,
+  "pre_eval": {
+    "total": 118,
+    "completed": 27,
+    "partial": 0,
+    "empty": 91,
+    "coverage": 22.9
+  },
+  "mid_sales": {
+    "total": 66,
+    "delivery_on_time": 0,
+    "delivery_late": 0,
+    "quality_ok": 0,
+    "quality_issue": 0,
+    "satisfaction_normal_plus": 0,
+    "satisfaction_bad": 0,
+    "cooperation_good": 0,
+    "cooperation_bad": 0,
+    "alert_items": []
+  },
+  "alerts": [
+    {
+      "color": "red",
+      "title": "入库评估覆盖率 偏低",
+      "desc": "当前 22.9%（27/118），建议加快评估进度。"
+    }
+  ]
+}
