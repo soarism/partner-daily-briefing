@@ -295,6 +295,14 @@ def detect_changes(current, previous):
 # HTML 简报生成
 # ============================================================
 
+def _record_hash(record):
+    """计算记录内容的稳定哈希，用于跨运行检测新增/修改。"""
+    import hashlib
+    payload = record.get("field_values", []) or []
+    text = json.dumps(payload, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def generate_html(data, changes):
     """生成简报 HTML"""
     today = datetime.now()
@@ -449,6 +457,16 @@ def generate_html(data, changes):
       <div class="label">🔧 售中支撑记录</div>
       <div class="value" style="color:#0891b2;">{mid_sales.get('total', 66)}</div>
     </div>
+    <div class="stat-card">
+      <div class="label">📅 本月更新数据</div>
+      <div class="value" style="color:#d97706;">{data.get('month_updated', 0)}</div>
+      <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">条记录新增/修改</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">🗓️ 今年更新数据</div>
+      <div class="value" style="color:#7c3aed;">{data.get('year_updated', 0)}</div>
+      <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">条记录新增/修改</div>
+    </div>
   </div>
 
   {changes_html}
@@ -561,6 +579,39 @@ def main():
 
     # 数据分析
     print("\n[3/4] 分析数据...")
+    # 数据更新追踪：基于内容哈希跨运行持久化，统计本月/今年新增或修改的条数
+    today = datetime.now()
+    prev_index = snapshot.get("record_index", {}) or {}
+    cur_index = {}
+    all_records = []
+    for _recs in (pre_eval_records, mid_sales_records, express_records):
+        if _recs:
+            all_records.extend(_recs.get("records", []))
+    bootstrap = (len(prev_index) == 0)
+    for rec in all_records:
+        rid = rec.get("record_id")
+        if not rid:
+            continue
+        h = _record_hash(rec)
+        prev = prev_index.get(rid)
+        if prev is None:
+            if bootstrap:
+                cur_index[rid] = {"hash": h, "first_seen": today.strftime("%Y-%m-%d"), "last_changed": None}
+            else:
+                cur_index[rid] = {"hash": h, "first_seen": today.strftime("%Y-%m-%d"), "last_changed": today.strftime("%Y-%m-%d")}
+        elif prev.get("hash") != h:
+            cur_index[rid] = {"hash": h, "first_seen": prev.get("first_seen"), "last_changed": today.strftime("%Y-%m-%d")}
+        else:
+            cur_index[rid] = {"hash": h, "first_seen": prev.get("first_seen"), "last_changed": prev.get("last_changed")}
+    # 保留已删除记录的历史，便于重新出现时正确判定（不计入更新）
+    for rid, info in prev_index.items():
+        cur_index.setdefault(rid, info)
+    month_updated = sum(1 for info in cur_index.values()
+                        if info.get("last_changed") and info["last_changed"][:7] == today.strftime("%Y-%m"))
+    year_updated = sum(1 for info in cur_index.values()
+                       if info.get("last_changed") and info["last_changed"][:4] == today.strftime("%Y"))
+    print(f"  [更新追踪] 本月更新 {month_updated} 条，今年更新 {year_updated} 条（基线记录 {len(cur_index)} 条）")
+
     pre_eval = analyze_pre_eval(pre_eval_records.get("records") if pre_eval_records else None, snap=snapshot)
     mid_sales = analyze_mid_sales(mid_sales_records.get("records") if mid_sales_records else None, snap=snapshot)
 
@@ -623,6 +674,9 @@ def main():
         "pre_eval": pre_eval,
         "mid_sales": mid_sales,
         "alerts": alerts,
+        "record_index": cur_index,
+        "month_updated": month_updated,
+        "year_updated": year_updated,
     }
     
     # 对比变化
