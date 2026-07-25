@@ -5,167 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>三级库合作伙伴评估体系 - 每日简报</title>
 <style>
-  :root { --bg: #f5f7fa; --card-bg: #ffffff; --text: #1a1a2e; --text-secondary: #6b7280; --border: #e5e7eb; --accent: #2563eb; --success: #059669; --warning: #d97706; --danger: #dc2626; --info: #7c3aed; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 24px; }
-  .container { max-width: 1000px; margin: 0 auto; }
-  .header { background: linear-gradient(135deg, #1e3a5f, #2563eb); color: white; border-radius: 16px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15); }
-  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-  .header .subtitle { opacity: 0.85; font-size: 16px; }
-  .header .date { margin-top: 12px; font-size: 14px; opacity: 0.7; }
-  .header .update-time { font-size: 12px; opacity: 0.5; margin-top: 4px; }
-  .overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .stat-card { background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .stat-card .label { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
-  .stat-card .value { font-size: 32px; font-weight: 700; }
-  .section { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden; }
-  .section-title { font-size: 17px; font-weight: 600; padding: 18px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
-  .section-body { padding: 20px 24px; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-  th { background: #f8fafc; font-weight: 600; color: var(--text-secondary); font-size: 12px; text-transform: uppercase; }
-  tr:last-child td { border-bottom: none; }
-  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-  .badge.green { background: #ecfdf5; color: #059669; }
-  .badge.red { background: #fef2f2; color: #dc2626; }
-  .badge.yellow { background: #fffbeb; color: #d97706; }
-  .badge.blue { background: #eff6ff; color: #2563eb; }
-  .badge.purple { background: #f5f3ff; color: #7c3aed; }
-  .progress-bar { height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-top: 6px; }
-  .progress-bar .fill { height: 100%; border-radius: 4px; }
-  .alert-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
-  .alert-item:last-child { border-bottom: none; }
-  .alert-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-  .alert-dot.red { background: #dc2626; }
-  .alert-dot.yellow { background: #d97706; }
-  .alert-dot.blue { background: #2563eb; }
-  .footer { text-align: center; padding: 20px; color: var(--text-secondary); font-size: 12px; }
-  .status-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 4px 12px; border-radius: 20px; }
-  .status-tag.live { background: #ecfdf5; color: #059669; }
-  .status-tag.cached { background: #fef3c7; color: #d97706; }
-</style>
-</head>
+  :root { --bg:#f5f7fa;--card-bg:#fff;--text:#1a1a2e;--text-secondary:#6b7280;--border:#e5e7eb;--accent:#2563eb;--success:#059669;--warning:#d97706;--danger:#dc2626;--info:#7c3aed; }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:24px; }
+  .container { max-width:1000px;margin:0 auto; }
+  .header { background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:16px;padding:32px;margin-bottom:24px;box-shadow:0 4px 20px rgba(37,99,235,.15); }
+  .header h1 { font-size:28px;font-weight:700;margin-bottom:4px; }
+  .header .subtitle { opacity:.85;font-size:16px; }
+  .header .date { margin-top:12px;font-size:14px;opacity:.7; }
+  .header .update-time { font-size:12px;opacity:.5;margin-top:4px; }
+  .overview { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px; }
+  .stat-card { background:var(--card-bg);border-radius:12px;padding:20px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .stat-card .label { font-size:13px;color:var(--text-secondary);margin-bottom:6px; }
+  .stat-card .value { font-size:32px;font-weight:700; }
+  .section { background:var(--card-bg);border-radius:12px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden; }
+  .section-title { font-size:17px;font-weight:600;padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px; }
+  .section-body { padding:20px 24px; }
+  table { width:100%;border-collapse:collapse;font-size:14px; }
+  th,td { padding:10px 14px;text-align:left;border-bottom:1px solid var(--border); }
+  th { background:#f8fafc;font-weight:600;color:var(--text-secondary);font-size:12px;text-transform:uppercase; }
+  tr:last-child td { border-bottom:none; }
+  .badge { display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:500; }
+  .badge.green { background:#ecfdf5;color:#059669; }
+  .badge.red { background:#fef2f2;color:#dc2626; }
+  .badge.yellow { background:#fffbeb;color:#d97706; }
+  .badge.blue { background:#eff6ff;color:#2563eb; }
+  .badge.purple { background:#f5f3ff;color:#7c3aed; }
+  .progress-bar { height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;margin-top:6px; }
+  .progress-bar .fill { height:100%;border-radius:4px; }
+  .alert-item { display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border); }
+  .alert-item:last-child { border-bottom:none; }
+  .alert-dot { width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0; }
+  .alert-dot.red { background:#dc2626; } .alert-dot.yellow { background:#d97706; } .alert-dot.blue { background:#2563eb; }
+  .footer { text-align:center;padding:20px;color:var(--text-secondary);font-size:12px; }
+  .status-tag { display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:4px 12px;border-radius:20px; }
+  .status-tag.live { background:#ecfdf5;color:#059669; }
+  .status-tag.cached { background:#fef3c7;color:#d97706; }
+</style></head>
 <body>
 <div class="container">
-
   <div class="header">
     <h1>📋 三级库合作伙伴评估体系</h1>
-    <div class="subtitle">每日数据简报</div>
+    <div class="subtitle">每日数据简报（实时核实）</div>
     <div class="date">2026年07月25日 星期六</div>
-    <div class="update-time">
-      数据获取时间：20:28 | 
+    <div class="update-time">数据获取时间：20:29 |
       <span class="status-tag live">🔗 实时数据</span>
     </div>
   </div>
-
   <div class="overview">
-    <div class="stat-card">
-      <div class="label">🤝 合作伙伴总数</div>
-      <div class="value" style="color:var(--accent);">114</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">✅ 已完成入库评估</div>
-      <div class="value" style="color:#dc2626;">22</div>
-      <div class="progress-bar"><div class="fill" style="width:18.6%; background:#dc2626;"></div></div>
-      <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">覆盖率 18.6%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">📦 极速通已签项目</div>
-      <div class="value" style="color:#7c3aed;">66</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">🔧 售中支撑记录</div>
-      <div class="value" style="color:#0891b2;">66</div>
-    </div>
+    <div class="stat-card"><div class="label">🤝 合作伙伴总数</div><div class="value" style="color:var(--accent);">114</div></div>
+    <div class="stat-card"><div class="label">✅ 已完成入库评估</div><div class="value" style="color:#dc2626;">22</div>
+      <div class="progress-bar"><div class="fill" style="width:18.6%;background:#dc2626;"></div></div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">覆盖率 18.6%</div></div>
+    <div class="stat-card"><div class="label">📦 极速通已签项目</div><div class="value" style="color:#7c3aed;">66</div></div>
+    <div class="stat-card"><div class="label">🔧 售中支撑记录</div><div class="value" style="color:#0891b2;">66</div></div>
   </div>
-
   
-
   <div class="section">
     <div class="section-title"><span class="icon">📝</span> 入库前能力评估状态</div>
-    <div class="section-body">
-      <table>
-        <tr><th>状态</th><th>数量</th><th>占比</th><th>说明</th></tr>
-        <tr>
-          <td><span class="badge green">已完成评估</span></td>
-          <td><strong>22</strong></td>
-          <td>18.6%</td>
-          <td>含方案/交付/培训/场景/代理/案例等能力项</td>
-        </tr>
-        <tr>
-          <td><span class="badge blue">部分评估</span></td>
-          <td><strong>3</strong></td>
-          <td>2.5%</td>
-          <td>已录入部分能力项</td>
-        </tr>
-        <tr>
-          <td><span class="badge red">待评估</span></td>
-          <td><strong>93</strong></td>
-          <td>78.8%</td>
-          <td>仅录入名称，尚未评估</td>
-        </tr>
-      </table>
-    </div>
+    <div class="section-body"><table>
+      <tr><th>状态</th><th>数量</th><th>占比</th><th>说明</th></tr>
+      <tr><td><span class="badge green">已完成评估</span></td><td><strong>22</strong></td><td>18.6%</td><td>含方案/交付/培训/场景/代理/案例等能力项</td></tr>
+      <tr><td><span class="badge yellow">部分评估</span></td><td><strong>3</strong></td><td>2.5%</td><td>已录入部分能力项</td></tr>
+      <tr><td><span class="badge red">待评估</span></td><td><strong>93</strong></td><td>78.8%</td><td>仅录入名称，尚未评估</td></tr>
+    </table></div>
   </div>
-
   <div class="section">
     <div class="section-title"><span class="icon">🔧</span> 售中支撑记录 - 评估概览</div>
-    <div class="section-body">
-      <table>
-        <tr><th>评估维度</th><th>正常/优秀</th><th>问题项</th><th>状态</th></tr>
-        <tr>
-          <td>交付及时性</td>
-          <td>按时交付：31</td>
-          <td>超时交付：3</td>
-          <td><span class="badge yellow">需关注</span></td>
-        </tr>
-        <tr>
-          <td>交付质量</td>
-          <td>无质量问题：31</td>
-          <td>有质量问题：2</td>
-          <td><span class="badge yellow">需关注</span></td>
-        </tr>
-        <tr>
-          <td>业主满意度</td>
-          <td>正常/非常满意：31</td>
-          <td>不满意：2</td>
-          <td><span class="badge yellow">需关注</span></td>
-        </tr>
-        <tr>
-          <td>配合程度</td>
-          <td>配合/主动配合：30</td>
-          <td>有不配合现象：0</td>
-          <td><span class="badge green">正常</span></td>
-        </tr>
-      </table>
-    </div>
+    <div class="section-body"><table>
+      <tr><th>评估维度</th><th>正常/优秀</th><th>问题项</th><th>状态</th></tr>
+      <tr><td>交付及时性</td><td>按时交付：31</td><td>超时交付：3</td><td><span class="badge yellow">需关注</span></td></tr>
+      <tr><td>交付质量</td><td>无质量问题：31</td><td>有质量问题：2</td><td><span class="badge yellow">需关注</span></td></tr>
+      <tr><td>业主满意度</td><td>正常/非常满意：31</td><td>不满意：2</td><td><span class="badge yellow">需关注</span></td></tr>
+      <tr><td>配合程度</td><td>配合/主动配合：30</td><td>有不配合现象：3</td><td><span class="badge yellow">需关注</span></td></tr>
+    </table></div>
   </div>
-
   
         <div class="section">
           <div class="section-title"><span class="icon">⚠️</span> 预警与建议</div>
           <div class="section-body">
             <div class="alert-item">
               <div class="alert-dot red"></div>
-              <div>
-                <strong>入库评估覆盖率 偏低</strong>
-                <p style="font-size:13px; color:var(--text-secondary);">当前 18.6%（22/118），建议加快评估进度。</p>
-              </div>
+              <div><strong>入库评估覆盖率 偏低</strong>
+              <p style="font-size:13px;color:var(--text-secondary);">当前 18.6%（22/118），建议加快评估进度。</p></div>
             </div>
             <div class="alert-item">
               <div class="alert-dot red"></div>
-              <div>
-                <strong>售中超时交付: 3 条</strong>
-                <p style="font-size:13px; color:var(--text-secondary);">未知 - 渝中区应急管理局调查问询室项目；成都讯图网云科技有限公司 - 重庆医科大学附属第一医院大数据与智慧医疗研究中心算力租赁服务；重庆励祺科技有限公司 - 重庆市渝中区医疗保障局购买AI大语言模型本地部署及打造渝中医保微信公众号人工智能咨询客服服务项目_售前支撑</p>
-              </div>
+              <div><strong>售中超时交付: 3 条</strong>
+              <p style="font-size:13px;color:var(--text-secondary);">（超时交付）；成都讯图网云科技有限公司（超时交付）；（超时交付）</p></div>
+            </div>
+            <div class="alert-item">
+              <div class="alert-dot yellow"></div>
+              <div><strong>配合度问题: 3 条</strong>
+              <p style="font-size:13px;color:var(--text-secondary);">存在不配合现象，需跟进沟通。</p></div>
             </div></div>
         </div>
-
-  <div class="footer">
-    本简报由工蜂 CI 定时流水线自动生成 | 三级库合作伙伴评估体系 | 2026年07月25日<br>
-    数据来源：WB-三级库合作伙伴评估体系智能表格 | 每天下午 5:00 自动更新
-  </div>
-
+  <div class="footer">本简报由腾讯文档连接器实时抓取生成 | 三级库合作伙伴评估体系 | 2026年07月25日<br>数据来源：WB-三级库合作伙伴评估体系智能表格 | 每天下午 5:00 自动更新</div>
 </div>
 </body>
 </html>
