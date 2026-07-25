@@ -34,9 +34,13 @@ jobs:
           git config user.name "Daily Briefing Bot"
           git config user.email "briefing-bot@example.com"
           
+          mkdir -p archive
           if [ -f "partner_daily_briefing.html" ]; then
             cp partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
             git add partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
-            git commit -m "📋 每日简报 $(TZ=Asia/Shanghai date +%Y-%m-%d)" || echo "无变化，跳过提交"
-            git push
+            if git commit -m "📋 每日简报 $(TZ=Asia/Shanghai date +%Y-%m-%d)"; then
+              git push
+            else
+              echo "无变化，跳过提交与推送"
+            fi
           fi
