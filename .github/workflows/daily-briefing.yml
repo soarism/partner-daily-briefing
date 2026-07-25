@@ -37,10 +37,22 @@ jobs:
           mkdir -p archive
           if [ -f "partner_daily_briefing.html" ]; then
             cp partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
-            git add partner_daily_briefing.html "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
+            git add partner_daily_briefing.html daily_data.json "archive/briefing_$(TZ=Asia/Shanghai date +%Y%m%d).html"
             if git commit -m "📋 每日简报 $(TZ=Asia/Shanghai date +%Y-%m-%d)"; then
               git push
             else
               echo "无变化，跳过提交与推送"
+            fi
+          fi
+
+      - name: 主动防护 - 实时失败时标红运行
+        run: |
+          if [ -f "daily_data.json" ]; then
+            LIVE_FAILED=$(python3 -c "import json,sys; d=json.load(open('daily_data.json')); print('true' if d.get('live_failed') else 'false')")
+            if [ "$LIVE_FAILED" = "true" ]; then
+              echo "::error::主动防护触发：实时数据获取失败，简报已回退至缓存/快照。请检查仓库 Secrets 中的 TDOCS_TOKEN / TDOCS_API_BASE 配置或腾讯文档服务状态。"
+              exit 1
+            else
+              echo "✅ 主动防护未触发：实时数据获取成功。"
             fi
           fi

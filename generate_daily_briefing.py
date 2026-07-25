@@ -96,7 +96,12 @@ def _parse_sse_or_json(raw):
         return None
 
 
+# 实时抓取状态（供“主动防护”使用）：标记是否真正尝试了实时 API、以及失败原因
+LIVE_ATTEMPTED = False
+LIVE_FAIL_REASON = ""
+
 def fetch_records(sheet_id, limit=200):
+    global LIVE_ATTEMPTED, LIVE_FAIL_REASON
     """
     从腾讯文档获取工作表记录，按优先级：
     1. 配置了 TDOCS_API_BASE / TDOCS_TOKEN（个人 Token）→ 直接调用公网 MCP 端点（真正实时）。
@@ -107,12 +112,14 @@ def fetch_records(sheet_id, limit=200):
     token = os.environ.get("TDOCS_TOKEN", "")
 
     if api_base and token:
+        LIVE_ATTEMPTED = True
         # 1) initialize 握手（捕获 session id）
         init = {"jsonrpc": "2.0", "id": 1, "method": "initialize",
                 "params": {"protocolVersion": "2024-11-05", "capabilities": {},
                            "clientInfo": {"name": "partner-briefing", "version": "1.0"}}}
         init_res, sid = _mcp_rpc(api_base, token, init)
         if not init_res or "result" not in init_res:
+            LIVE_FAIL_REASON = LIVE_FAIL_REASON or "live_api_failed"
             print("  [WARN] MCP initialize 失败，回退 live_cache")
         else:
             # 2) tools/call smartsheet_list_records
@@ -126,15 +133,17 @@ def fetch_records(sheet_id, limit=200):
                         try:
                             data = json.loads(c["text"])
                             if "records" in data:
-                                return data
+                                return data, "live"
                         except Exception:
                             pass
                 # 部分实现把结果直接放在 result 顶层
                 if "records" in res.get("result", {}):
-                    return res["result"]
+                    return res["result"], "live"
             print("  [WARN] MCP 返回结构异常，回退 live_cache")
 
     # 回退：live_cache
+    if LIVE_ATTEMPTED:
+        LIVE_FAIL_REASON = LIVE_FAIL_REASON or "live_api_failed"
     cache_name = {"trLD8T": "pre_eval", "tqrs1H": "mid_sales", "ttKzck": "express"}.get(sheet_id)
     if cache_name:
         cache_path = os.path.join(BRIEFING_DIR, "live_cache", f"{cache_name}.json")
@@ -143,10 +152,10 @@ def fetch_records(sheet_id, limit=200):
                 with open(cache_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 print(f"  ✓ 从 live_cache 读取 {cache_name}：{len(data.get('records', []))} 条")
-                return data
+                return data, "cache"
             except Exception as e:
                 print(f"  [WARN] live_cache 读取失败: {e}")
-    return None
+    return None, "none"
 
 def load_snapshot():
     """加载上次数据快照"""
@@ -335,6 +344,23 @@ def generate_html(data, changes):
           <div class="section-body">{alert_items}</div>
         </div>"""
     
+    # 主动防护：实时数据获取失败时，顶部显示红色告警横幅
+    alert_banner_html = ""
+    if data.get("live_failed"):
+        reason = data.get("fallback_reason", "实时数据获取失败")
+        src = data.get("data_source", "本地缓存/历史快照")
+        alert_banner_html = f"""
+        <div class="alert-banner">
+          <div class="alert-banner-icon">⚠️</div>
+          <div class="alert-banner-body">
+            <div class="alert-banner-title">实时数据获取失败 · 主动防护告警</div>
+            <div class="alert-banner-desc">
+              {reason} 当前简报基于 <strong>{src}</strong> 生成，<strong>可能不是最新数据</strong>。
+              请检查仓库 Secrets 中的 <code>TDOCS_TOKEN</code> / <code>TDOCS_API_BASE</code> 配置，以及腾讯文档服务状态。
+            </div>
+          </div>
+        </div>"""
+
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -380,10 +406,19 @@ def generate_html(data, changes):
   .status-tag {{ display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 4px 12px; border-radius: 20px; }}
   .status-tag.live {{ background: #ecfdf5; color: #059669; }}
   .status-tag.cached {{ background: #fef3c7; color: #d97706; }}
+  /* 主动防护：实时数据获取失败时的红色告警横幅 */
+  .alert-banner {{ display: flex; align-items: flex-start; gap: 14px; background: #fef2f2; border: 1px solid #fecaca; border-left: 6px solid #dc2626; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(220,38,38,0.08); }}
+  .alert-banner-icon {{ font-size: 24px; line-height: 1; flex-shrink: 0; }}
+  .alert-banner-body {{ flex: 1; }}
+  .alert-banner-title {{ font-size: 16px; font-weight: 700; color: #b91c1c; margin-bottom: 4px; }}
+  .alert-banner-desc {{ font-size: 13px; color: #7f1d1d; line-height: 1.7; }}
+  .alert-banner-desc code {{ background: #fee2e2; padding: 1px 6px; border-radius: 4px; font-size: 12px; }}
 </style>
 </head>
 <body>
 <div class="container">
+
+  {alert_banner_html}
 
   <div class="header">
     <h1>📋 三级库合作伙伴评估体系</h1>
@@ -501,23 +536,26 @@ def main():
     
     # 尝试从 API 获取数据
     api_success = False
+    global LIVE_ATTEMPTED, LIVE_FAIL_REASON
+    LIVE_ATTEMPTED = False
+    LIVE_FAIL_REASON = ""
 
     # 加载最近一次真实快照（沙箱实时抓取生成），用于无 API 时的兜底
     snapshot = load_snapshot()
 
     print("\n[1/4] 获取入库前能力评估数据...")
-    pre_eval_records = fetch_records(SHEETS["pre_eval"])
+    pre_eval_records, pre_src = fetch_records(SHEETS["pre_eval"])
     if pre_eval_records:
         api_success = True
         print(f"  ✓ 获取到 {len(pre_eval_records.get('records', []))} 条记录")
 
     print("\n[2/4] 获取售中支撑记录数据...")
-    mid_sales_records = fetch_records(SHEETS["mid_sales"])
+    mid_sales_records, mid_src = fetch_records(SHEETS["mid_sales"])
     if mid_sales_records:
         print(f"  ✓ 获取到 {len(mid_sales_records.get('records', []))} 条记录")
 
     print("\n[2.5/4] 获取极速通已签项目数据...")
-    express_records = fetch_records(SHEETS["express_projects"])
+    express_records, exp_src = fetch_records(SHEETS["express_projects"])
     if express_records:
         print(f"  ✓ 获取到 {len(express_records.get('records', []))} 条记录")
 
@@ -527,9 +565,22 @@ def main():
     mid_sales = analyze_mid_sales(mid_sales_records.get("records") if mid_sales_records else None, snap=snapshot)
 
     # 真实数据来源判定：API 或 live_cache 任一取到即算实时
-    real_data = bool(pre_eval_records or mid_sales_records or express_records)
-    if real_data:
-        api_success = True
+    # 主动防护：实时成功要求「配置齐全」且「三表均取自实时 API」
+    sources = [pre_src, mid_src, exp_src]
+    live_ok = LIVE_ATTEMPTED and all(s == "live" for s in sources)
+    api_success = live_ok
+
+    # 回退层级与原因（用于告警横幅文案）
+    data_source = "本地缓存快照（live_cache）" if "cache" in sources else "历史数据快照（daily_data.json）"
+    if not live_ok:
+        if not LIVE_ATTEMPTED:
+            fallback_reason = "未检测到腾讯文档 API 配置（TDOCS_TOKEN / TDOCS_API_BASE 未设置），已回退至缓存/快照。"
+        else:
+            fallback_reason = LIVE_FAIL_REASON or "腾讯文档实时 API 调用失败，已回退至缓存/快照。"
+        print(f"  [主动防护] 实时数据获取失败：{fallback_reason} 当前简报基于 {data_source}。")
+    else:
+        fallback_reason = ""
+        print("  [主动防护] 实时数据获取成功，未触发告警。")
 
     print(f"  入库评估: {pre_eval['completed']}/{pre_eval['total']} 完成 ({pre_eval['coverage']}%)")
     print(f"  售中支撑: {mid_sales['total']} 条记录")
@@ -564,6 +615,9 @@ def main():
         "date": datetime.now().strftime("%Y-%m-%d"),
         "timestamp": datetime.now().isoformat(),
         "api_success": api_success,
+        "live_failed": (not live_ok),
+        "data_source": data_source,
+        "fallback_reason": fallback_reason,
         "partner_count": snapshot.get("partner_count", 114),
         "express_count": len(express_records.get("records", [])) if express_records else snapshot.get("express_count", 66),
         "pre_eval": pre_eval,
