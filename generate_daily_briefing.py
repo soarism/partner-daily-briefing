@@ -101,55 +101,45 @@ def save_snapshot(data):
 # 数据分析
 # ============================================================
 
-def analyze_pre_eval(records):
-    """分析入库前能力评估数据"""
-    total = len(records) if records else 118
-    completed = 0
-    partial = 0
-    empty = 0
-    
+def analyze_pre_eval(records, snap=None):
+    """分析入库前能力评估数据。records 为 None 时回退到最近一次真实快照。"""
     if records:
+        total = len(records)
+        completed = partial = empty = 0
         for r in records:
             fvs = r.get("field_values", [])
             field_names = {fv.get("field", "") for fv in fvs}
             eval_fields = field_names - {"合作伙伴"}
-            
             if len(eval_fields) >= 4:
                 completed += 1
             elif len(eval_fields) >= 1:
                 partial += 1
             else:
                 empty += 1
-    else:
-        # 使用手动快照数据
-        completed = 27
-        partial = 0
-        empty = 91
-    
-    return {
-        "total": total,
-        "completed": completed,
-        "partial": partial,
-        "empty": empty,
-        "coverage": round(completed / total * 100, 1) if total > 0 else 0
-    }
+        return {
+            "total": total, "completed": completed, "partial": partial, "empty": empty,
+            "coverage": round(completed / total * 100, 1) if total > 0 else 0
+        }
+    # 无实时数据：使用最近一次真实快照（由沙箱实时抓取生成）
+    if snap and snap.get("pre_eval"):
+        return snap["pre_eval"]
+    return {"total": 118, "completed": 22, "partial": 3, "empty": 93, "coverage": 18.6}
 
-def analyze_mid_sales(records):
-    """分析售中支撑记录"""
-    stats = {
-        "total": len(records) if records else 66,
-        "delivery_on_time": 0,
-        "delivery_late": 0,
-        "quality_ok": 0,
-        "quality_issue": 0,
-        "satisfaction_normal_plus": 0,
-        "satisfaction_bad": 0,
-        "cooperation_good": 0,
-        "cooperation_bad": 0,
-        "alert_items": []
-    }
-    
+def analyze_mid_sales(records, snap=None):
+    """分析售中支撑记录。records 为 None 时回退到最近一次真实快照。"""
     if records:
+        stats = {
+            "total": len(records),
+            "delivery_on_time": 0,
+            "delivery_late": 0,
+            "quality_ok": 0,
+            "quality_issue": 0,
+            "satisfaction_normal_plus": 0,
+            "satisfaction_bad": 0,
+            "cooperation_good": 0,
+            "cooperation_bad": 0,
+            "alert_items": []
+        }
         for r in records:
             for fv in r.get("field_values", []):
                 field = fv.get("field", "")
@@ -179,10 +169,15 @@ def analyze_mid_sales(records):
                 elif field == "配合程度":
                     if items and items[0].get("text") in ["配合", "主动配合"]:
                         stats["cooperation_good"] += 1
-                    elif items and items[0].get("text") in ["有不配合的现象"]:
-                        stats["cooperation_bad"] += 1
-    
-    return stats
+                elif items and items[0].get("text") in ["有不配合的现象"]:
+                    stats["cooperation_bad"] += 1
+        return stats
+    # 无实时数据：使用最近一次真实快照
+    if snap and snap.get("mid_sales"):
+        return snap["mid_sales"]
+    return {"total": 66, "delivery_on_time": 0, "delivery_late": 0, "quality_ok": 0,
+            "quality_issue": 0, "satisfaction_normal_plus": 0, "satisfaction_bad": 0,
+            "cooperation_good": 0, "cooperation_bad": 0, "alert_items": []}
 
 def _get_project(record):
     for fv in record.get("field_values", []):
@@ -436,22 +431,25 @@ def main():
     
     # 尝试从 API 获取数据
     api_success = False
-    
+
+    # 加载最近一次真实快照（沙箱实时抓取生成），用于无 API 时的兜底
+    snapshot = load_snapshot()
+
     print("\n[1/4] 获取入库前能力评估数据...")
     pre_eval_records = fetch_records(SHEETS["pre_eval"])
     if pre_eval_records:
         api_success = True
         print(f"  ✓ 获取到 {len(pre_eval_records.get('records', []))} 条记录")
-    
+
     print("\n[2/4] 获取售中支撑记录数据...")
     mid_sales_records = fetch_records(SHEETS["mid_sales"])
     if mid_sales_records:
         print(f"  ✓ 获取到 {len(mid_sales_records.get('records', []))} 条记录")
-    
+
     # 数据分析
     print("\n[3/4] 分析数据...")
-    pre_eval = analyze_pre_eval(pre_eval_records.get("records") if pre_eval_records else None)
-    mid_sales = analyze_mid_sales(mid_sales_records.get("records") if mid_sales_records else None)
+    pre_eval = analyze_pre_eval(pre_eval_records.get("records") if pre_eval_records else None, snap=snapshot)
+    mid_sales = analyze_mid_sales(mid_sales_records.get("records") if mid_sales_records else None, snap=snapshot)
     
     print(f"  入库评估: {pre_eval['completed']}/{pre_eval['total']} 完成 ({pre_eval['coverage']}%)")
     print(f"  售中支撑: {mid_sales['total']} 条记录")
@@ -467,7 +465,7 @@ def main():
     
     if mid_sales.get("delivery_late", 0) > 0:
         late_items = mid_sales.get("alert_items", [])
-        alert_desc = "；".join([f"{a['partner']} - {a['project']}" for a in late_items[:3]])
+        alert_desc = "；".join([f"{a.get('partner','')} - {a.get('project') or a.get('issue','')}" for a in late_items[:3]])
         alerts.append({
             "color": "red",
             "title": f"售中超时交付: {mid_sales['delivery_late']} 条",
@@ -478,16 +476,16 @@ def main():
         alerts.append({
             "color": "yellow",
             "title": f"配合度问题: {mid_sales['cooperation_bad']} 条",
-            "desc": "���在不配合现象，需跟进沟通。"
+            "desc": "存在不配合现象，需跟进沟通。"
         })
     
-    # 当前数据
+    # 当前数据（无 API 时，合作伙伴/极速通总数回退到最近一次真实快照）
     current_data = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "timestamp": datetime.now().isoformat(),
         "api_success": api_success,
-        "partner_count": 114,
-        "express_count": 66,
+        "partner_count": snapshot.get("partner_count", 114) if not api_success else 114,
+        "express_count": snapshot.get("express_count", 66) if not api_success else 66,
         "pre_eval": pre_eval,
         "mid_sales": mid_sales,
         "alerts": alerts,

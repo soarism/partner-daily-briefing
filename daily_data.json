@@ -1,33 +1,56 @@
 {
   "date": "2026-07-25",
-  "timestamp": "2026-07-25T15:05:43.398802",
-  "api_success": false,
+  "timestamp": "2026-07-25T20:14:32.710429",
+  "api_success": true,
   "partner_count": 114,
   "express_count": 66,
   "pre_eval": {
     "total": 118,
-    "completed": 27,
-    "partial": 0,
-    "empty": 91,
-    "coverage": 22.9
+    "completed": 22,
+    "partial": 3,
+    "empty": 93,
+    "coverage": 18.6
   },
   "mid_sales": {
     "total": 66,
-    "delivery_on_time": 0,
-    "delivery_late": 0,
-    "quality_ok": 0,
-    "quality_issue": 0,
-    "satisfaction_normal_plus": 0,
-    "satisfaction_bad": 0,
-    "cooperation_good": 0,
-    "cooperation_bad": 0,
-    "alert_items": []
+    "delivery_on_time": 31,
+    "delivery_late": 3,
+    "quality_ok": 31,
+    "quality_issue": 2,
+    "satisfaction_normal_plus": 31,
+    "satisfaction_bad": 2,
+    "cooperation_good": 30,
+    "cooperation_bad": 3,
+    "alert_items": [
+      {
+        "partner": "",
+        "issue": "超时交付"
+      },
+      {
+        "partner": "成都讯图网云科技有限公司",
+        "issue": "超时交付"
+      },
+      {
+        "partner": "",
+        "issue": "超时交付"
+      }
+    ]
   },
   "alerts": [
     {
       "color": "red",
       "title": "入库评估覆盖率 偏低",
-      "desc": "当前 22.9%（27/118），建议加快评估进度。"
+      "desc": "当前 18.6%（22/118），建议加快评估进度。"
+    },
+    {
+      "color": "red",
+      "title": "售中超时交付: 3 条",
+      "desc": "（超时交付）；成都讯图网云科技有限公司（超时交付）；（超时交付）"
+    },
+    {
+      "color": "yellow",
+      "title": "配合度问题: 3 条",
+      "desc": "存在不配合现象，需跟进沟通。"
     }
   ]
 }
