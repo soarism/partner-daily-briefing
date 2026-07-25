@@ -117,7 +117,7 @@ def fetch_records(sheet_id, limit=200):
         else:
             # 2) tools/call smartsheet_list_records
             call = {"jsonrpc": "2.0", "id": 2, "method": "tools/call",
-                    "params": {"name": "smartsheet_list_records",
+                    "params": {"name": "smartsheet.list_records",
                                "arguments": {"file_id": FILE_ID, "sheet_id": sheet_id, "limit": limit}}}
             res, _ = _mcp_rpc(api_base, token, call, session_id=sid)
             if res and "result" in res:
