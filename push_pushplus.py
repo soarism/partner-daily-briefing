@@ -12,7 +12,7 @@ import sys
 import urllib.request
 
 PUSHPLUS_API = "https://www.pushplus.plus/send"
-REPO_URL = "https://github.com/soarism/partner-daily-briefing"
+REPO_URL = "https://soarism.github.io/partner-daily-briefing"
 BRIEFING_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "daily_data.json")
 
 
@@ -49,7 +49,7 @@ def build_text(d):
             lines.append("- {}".format(a.get("title", "")))
 
     lines.append("")
-    lines.append("完整简报（电脑端查看）：{}/blob/main/partner_daily_briefing.html".format(REPO_URL))
+    lines.append("完整简报（电脑端查看）：https://soarism.github.io/partner-daily-briefing/partner_daily_briefing.html")
     return "\n".join(lines)
 
 
