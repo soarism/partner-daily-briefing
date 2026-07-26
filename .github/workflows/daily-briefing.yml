@@ -57,15 +57,15 @@ jobs:
             fi
           fi
 
-      - name: 推送企业微信（每日摘要 + 主动防护告警）
+      - name: 推送个人微信（PushPlus）
         if: always()
         continue-on-error: true
         env:
-          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: |
-          if [ -z "$WECOM_WEBHOOK" ]; then
-            echo "未配置 WECOM_WEBHOOK，跳过企业微信推送"
+          if [ -z "$PUSHPLUS_TOKEN" ]; then
+            echo "未配置 PUSHPLUS_TOKEN，跳过个人微信推送"
             exit 0
           fi
-          python3 push_wecom.py
+          python3 push_pushplus.py
 
