@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-20",
-  "timestamp": "2026-10-20T14:12:11.219014",
+  "date": "2026-10-21",
+  "timestamp": "2026-10-21T14:24:37.705636",
   "api_success": true,
   "live_failed": false,
   "data_source": "历史数据快照（daily_data.json）",
@@ -56,19 +56,19 @@
   ],
   "record_index": {
     "rujPBm": {
-      "hash": "e57129afcb22c38522fc59db4d40b8578affa4d5ee220e757f2976921b262b88",
+      "hash": "86bf55ab0d830335bbfc4a60f5e875a88972efb6e60b9fdfa219b89e7f6008aa",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rqpv3S": {
-      "hash": "2831ef6e0f236f0bae1b2bdf10fbe005bc9cae55b6eb0a383deb021b5efa1be4",
+      "hash": "1a3902c2ef87e6065a3ff82c5636988e84ace78e7d70537012c35618ec66e28a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rRIO7n": {
-      "hash": "ec0445df4bd929720debc1b5ef8fcf40ac91be213c5fce4214c9b2f5da2d0343",
+      "hash": "54f39fad3c6c6754e250ca1b5f649c9f7a0bb75a441242f3292f818f0c0d1fa0",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rCRMlo": {
       "hash": "35a9341e2be1489e5e3b83e9042428da117b777695d6870e60b2a43974fc0219",
@@ -91,9 +91,9 @@
       "last_changed": null
     },
     "rETwoQ": {
-      "hash": "ba2bc38954fe68c0b60a0e0b72e82ff608895e04559ca5f6ed10e87ce3198107",
+      "hash": "99ad53a5cc184254452839ba2300497cb2a14694d329833e60e29f90ece54669",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "ruxiKR": {
       "hash": "a67d2984f89544a9ee7cc1690549139f215940a8d2254aa78d9a9f5db9d05881",
@@ -191,9 +191,9 @@
       "last_changed": null
     },
     "r4TQnZ": {
-      "hash": "fb2134dc5e1642ddf6f2d24aeaefef183a262997fc3171c32ce6991ec0134403",
+      "hash": "1cc6553cc08e1b20d517f4f0ed1ec7409c195492e8827fe594377c3742068b3e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rh6TA8": {
       "hash": "6bb0d7ab00ed65ed40ac53182ffc27ff6e5492e46bc3160507f56021eecbd27c",
@@ -246,9 +246,9 @@
       "last_changed": null
     },
     "rdMgnm": {
-      "hash": "33e33abe71c7d0d4237296f97ef1f30fc471755d732ffb49b7dde9dae1d84d7c",
+      "hash": "eb4e0a0680e9bcdc06be2984bb5390c884d4b80e58243425b721f055c0cde270",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rZsRNN": {
       "hash": "892c845447b6a3f171dc143f27a42bd98aba2d41e4cfc61226e8e152a1e3de30",
@@ -306,9 +306,9 @@
       "last_changed": null
     },
     "r2BF4N": {
-      "hash": "b45784ea460cb33cbea6b8a6ef30e7668cd7f5855d3c336c8321a5b8d87f5474",
+      "hash": "fc878607c89bd4a31aa217758c30ef9169804bf8aab25ee6de7a30e0511f5d49",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rs4yUT": {
       "hash": "72dcf718f9bd720a7f684108c0681bb237f82dde98d9d58efda72d8ac4491387",
@@ -336,9 +336,9 @@
       "last_changed": null
     },
     "rC1sn7": {
-      "hash": "ff732a6c7658590718f327173107279d6b20d6dd916cd8a15a0c469dbcd815c2",
+      "hash": "46c3dbb744fbce7e08bcc4b716eb49c6b39d72bcbfac9f50114388c7c0788705",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rxRDIB": {
       "hash": "ac9bbea915fbe0cc61eab448db2e294b0230839714aa51d5e992bfe4c667c1da",
@@ -351,9 +351,9 @@
       "last_changed": null
     },
     "rq7NEq": {
-      "hash": "f99f944edbdd27b92b49e4c5b32fce39b0ca1cfb647036b35c5481614eb0798f",
+      "hash": "c9d19f2e94badd2c1becc38a7830928e28572395680b029c13900ac0205584f5",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rE24Uz": {
       "hash": "dbc5bb7fd0556bf3ee1c08b5980f62fdffbffac28a52a3ed21cf30e80355e804",
@@ -426,9 +426,9 @@
       "last_changed": null
     },
     "rf3RN6": {
-      "hash": "a3b067ab46e8fbc333ba2735d3b7d51b83a318f18045929fbbaaa4e87e9b957d",
+      "hash": "5b83b46781c45bdb1b71c6f331ee50278f1bff1f8c6c15e0c6ab4ac587c98ebd",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rr512s": {
       "hash": "8e327e7cfb05b7f4bc4bdc3f8941d890586efa4ae8a84fa6356c5b35841f2e86",
@@ -491,14 +491,14 @@
       "last_changed": null
     },
     "rkWTWf": {
-      "hash": "cee604db641839bb77ffca37ecd09ac465ae0fd9fa28835d072a1681d0cd3acf",
+      "hash": "d83530edf2079075a86aabe4e6291536aac29773ae697b10dbf59b8b4c1c959e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rkBJqo": {
-      "hash": "903ed77441d75271bccb7619dd7c42a4f3e30ee41b89a4757c6e0f0b2db30fb2",
+      "hash": "da0618eb3d54f88b372b04ca6f3759867e5df844181b7ed97b4bb7e22352d051",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rWcP7g": {
       "hash": "69b7d9748ec604121acecbf8a9e1ac61e146223e0446adac0f3ea22e0b156964",
@@ -541,19 +541,19 @@
       "last_changed": null
     },
     "rfF2OR": {
-      "hash": "ce26d252ffa01b862a6e8a57d6d3c059e479b0b2de96b61ca9b983377dd483e7",
+      "hash": "f22f8a95c237226b45f82d4f76adf496146acada44b730014a638b03109c1909",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rk2m5A": {
-      "hash": "833a6b490a3acb5fe92cfe4629f4e421f250ce59682ba20bb47c41d142fd8e3c",
+      "hash": "b743195429e10192ef5a19decceabd032b57cad7cdfdb697ded62fd2bff36c81",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rsS848": {
-      "hash": "b87b176403f9c781a5b81f3081f7fbf37bbb52eddfdc1d7c82b49e85b5b4b169",
+      "hash": "f508cf50d4c2b1d673b603e414677d8dd532a78970cd956366b50cad5c964cba",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "riOk3V": {
       "hash": "7ba53d87437b3f3fc32e136526d5bc65c6e5b81a7ea07c10e74a39b009de341f",
@@ -576,9 +576,9 @@
       "last_changed": null
     },
     "r9QBST": {
-      "hash": "238f2c71e572a8dc2dac045520c110ae7722cd2f5efc0a42746e69771f0ad186",
+      "hash": "51e2dc2ff7e783bfff6e2fe125fea7ac04e4f59b3f035a54758c513ab0b60e8e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r3AVIQ": {
       "hash": "776b865181523a565535b86e803e55dcc295ba33ce387003bf82a7f962381923",
@@ -591,9 +591,9 @@
       "last_changed": null
     },
     "r55aDx": {
-      "hash": "d06d574e70a8efaa8b3d0ac40fa67caa76bcb79afab0cc68ca32828c7c088611",
+      "hash": "414648f8f3dd525a5d20551916b06459b183a05de9499a2d83597a7955fafa89",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "roLDE4": {
       "hash": "592c7ff3b6867222fc26390977408b2262e0ee226c94e5ec341538aa0743cde6",
@@ -601,34 +601,34 @@
       "last_changed": null
     },
     "rvo0bP": {
-      "hash": "cea79de246e6b0b021117afd8f381bde7e9af73e45683c97685b294559f87242",
+      "hash": "0715a9cf7e75f9e7e3764570462cae217e03607e99ced60a551818bd191a6790",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rkHYZp": {
-      "hash": "a1fdd91b056f43f6df7e31d45e9303e6c05035d9a7ec019045e7368169ebe183",
+      "hash": "7b70f5dd959a826350f58d91bad2cfd87d33569de94bef47ca4966716a121067",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rSDA44": {
-      "hash": "d50ed291f610fa3a629d9cf1ae88bbefc712689cb6e4e12f746343800a1b634c",
+      "hash": "a850d59bd186ee5abad592f618dab93ddb396f1bf55d9078725c01c873ed05ea",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rUi6jz": {
-      "hash": "b883ced1c071fd0ad999a5f62e9bbd6f5fb3bffb8c2957e556e9deed97064412",
+      "hash": "5f5151996fecc277b56f6b66ae7e2fe911199c1f39a907e5ab74ad463de82d00",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "riCBnK": {
-      "hash": "6bdb57b3430fa5d360c8f67538e15506f3ce07b7b197f236eecee5df69da4378",
+      "hash": "8c2361baf7411e5eb199d0d2185f7eb802aae109545ad72b92b656cd2a0d0d08",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rBXFIc": {
-      "hash": "998de95ba1d0518d07720d1f93bbeafff533e9e408264257d81a7347c9297f83",
+      "hash": "7d8b930e008c5cb41ccfe4483ce6025f9ab94e348a8685aacc4a04d4df80f049",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r9PLS3": {
       "hash": "32c9789cf1ec46d5e64683bc0a92727db95d3baa1e6ab968714a672ee46066b1",
@@ -636,14 +636,14 @@
       "last_changed": "2026-10-19"
     },
     "r9XhXI": {
-      "hash": "306991ec10bb8b4f2fc87e06a76bcb0fad3608d5a8fcc5406f3f5a70e7b93be2",
+      "hash": "97186e451650993c3bef012c0e4233fea5add5b9043ef98af1901f4aca2fb7a7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r5ofjj": {
-      "hash": "7573d2a4ddb389fcd3f837907a1054231b7ed54bbe43a6ecea90633a330a1728",
+      "hash": "c187a4aad51fc26f78a2401cafecbcd431b28dd4884b88ca9e4b0cd3f8a9c5ab",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rm1WOU": {
       "hash": "a6d6ba47bbe20f72de0136470a8a3c9e0445f12e6a67b037fc1bbe70a1ada331",
@@ -651,9 +651,9 @@
       "last_changed": null
     },
     "rmfNfe": {
-      "hash": "5c86420d5113e60b13327f787e3eba4796148deffdb4e2fa53268f84b6536b76",
+      "hash": "158aac2b1c92a5271c5af9cf9f7deb66bd15eeff4b40afc525b07e722b93415e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rwAguL": {
       "hash": "d19c9fe7fdb2c554ba2ac04063cbd20a2bcba39cd4f2928347440269b6a45b0f",
@@ -661,14 +661,14 @@
       "last_changed": null
     },
     "rdu7QT": {
-      "hash": "b8ff489f74cfe45367bad723e1c23b75f981c882a667012d6d628368d0c4fd34",
+      "hash": "fcac5067925ee4a81633365e30fa918d677bd5a3c6f962e5257d8cae1cca2a16",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rW9wDi": {
-      "hash": "91c9573df59719c930c0032335e1b1f0c98b843123c1d6f2e758989b1664f95c",
+      "hash": "54faf279110ffc49bb42f76526a00f1a976f32eb07e2be306019a81528ad1458",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rzvfyf": {
       "hash": "0916eb7fb8b38c009bd2d18cd2d21e158f11532dd2f223a5723263456484b881",
@@ -681,14 +681,14 @@
       "last_changed": null
     },
     "rmnbTl": {
-      "hash": "e5fc20b89ce021f359541ec37c1da1b7b07ebd7427a8197a55a0739ce16b1ee6",
+      "hash": "7e9e2de61419aa3302500dc9e38af2fe2792de8fecf89db5a2de1b21f480a271",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rtCgM6": {
-      "hash": "123cf506c61e5445e7c8e12f2415d5c4aadd0a30c72321b46137955a5df8ad81",
+      "hash": "b1c95d0a19a0111ef295f5714182fd98b7a0d47e0a562e8147742fff3d99b5fa",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rXuK9G": {
       "hash": "c981ffdb63bc9ecae2b4199add72b2507d01ff1d4148597834421af3b78d99b7",
@@ -701,14 +701,14 @@
       "last_changed": null
     },
     "rUHPdS": {
-      "hash": "c4f01b319124aebb09d5ea73bd56a2007229f250cc26f68f28b9a9231beed4a0",
+      "hash": "0e0a75d0f7f12cf68d0098f25c6dad291801213f3d19528885a6afa4e41842d7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r5h8rz": {
-      "hash": "38699957906d1a3e92210618965d0e46b87731d42db53797232a60ed60d1439c",
+      "hash": "0829c168bf8abe3eafc200564fcf2b7a0d427731b1ef42d354f4c137fd5dd47f",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r8lHw8": {
       "hash": "1c90706c3fd94783693281b4eea9c03b019b447eaf3999a6119c9725586b8443",
@@ -716,14 +716,14 @@
       "last_changed": null
     },
     "rnnfaB": {
-      "hash": "78a584acd6fa1c244f838cfc06c58a333f60509a6817f272e87b41a0801f9561",
+      "hash": "7f495c973d58655ec2b6ba16cf00fff3d276bbe123d1e46d84bb9d59b02140c6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rfBpoX": {
-      "hash": "640ce64299a06f76cda585b5527c46290a50d68acdbec5f1af489ff53bc60d82",
+      "hash": "da07a07d80db02ff46a08cb6c30a6126a7d8f09444c67d777d4a9dce0d2f656b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rcQGDv": {
       "hash": "7fcc23329ad49bff1617763d3278b9d048dba9f6e5c5b1155b71d7c24f86176d",
@@ -731,9 +731,9 @@
       "last_changed": null
     },
     "r4R44C": {
-      "hash": "092d3105a20251084b3a695ef0a4d0fc94c3a3ffeb50ea5cac8bc08e9349d673",
+      "hash": "426c514e2df9381e4fd14431d0b86deee5fc60337787f7c412f4e56b27eca2e6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "ruDuPZ": {
       "hash": "8cedc958100698fe665a9a036aa891a1b53e47d075e435bf790d12508360475a",
@@ -746,14 +746,14 @@
       "last_changed": null
     },
     "rYwL5a": {
-      "hash": "25ef8ed7ed5835051073d95e84b32d08c2f7bf9b9fad5b4def2cd2e9eb3ac7a3",
+      "hash": "fdd8a40d0f9b8239bbe5d67105bac6fc6c417fb00512c2e90e2f316571c0d087",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rvyYTa": {
-      "hash": "6bc195949e0f144078338de4feea1a03b0bc2943ccf59f5cd826ada01dd48d12",
+      "hash": "1d4d34eceac5df4b2f949095cfeeacb4757888d0125e3ebf7f955088b68b494a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "ruaU81": {
       "hash": "c3c98eab148fd60123d79f75f7194825c79d243f98687c953a3ad9b5fd193b4c",
@@ -766,14 +766,14 @@
       "last_changed": null
     },
     "rC43mT": {
-      "hash": "d196c76c4166258527d9cc4de1db78ff0bf32f00357ce64f9b2214cec7348d0d",
+      "hash": "21a241e721692b52b1fcffe5a4ea87195d72b4e6ebaf5487d9ac27b806ae161d",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rJKCdB": {
-      "hash": "3c4310e3aff24a89d84bb1d778810b8886114dcc54461757862c1e535827aeda",
+      "hash": "3a79f62d2b4342ab292f4bb091fc1509c87c01c9d3e2a22fc8bbc7c18bda4785",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r6fcwn": {
       "hash": "7fad9c4501a7fbfefda2bd3f4325c2716bf2e804786a1f9161cbbf83c40dec76",
@@ -821,19 +821,19 @@
       "last_changed": null
     },
     "rLxNkR": {
-      "hash": "44cf307a197378a3bf2ec659406115174efa6ecdd3f8fda009c636a227f49afe",
+      "hash": "d8eed2f95a3b878a185c0fb5e5afcdef2e6de63010bef1850e90687e4053a14b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r6GarM": {
-      "hash": "d7f49a6ef65710b707f245996bc3358493d9ad01cd4aa16ba8247ecccf1fc239",
+      "hash": "5ad699b72935167af5c9926b6e289453037d7407b3efe160b404b625dcbc65c3",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rKinWe": {
-      "hash": "a4fdf9e40add8f9c5e3d22c94885a1a5a56e4aab1f576750c7fd43fa5e38ad1b",
+      "hash": "abe2c4f81a771867c83a5a60ea5317e7330b407255d19308a946c95041f20e0f",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rN1g8M": {
       "hash": "494d681a18c5abd1df369d4c887c0ed3c0717e3e6a2071cbf5e5dc5b82f58954",
@@ -841,19 +841,19 @@
       "last_changed": null
     },
     "rBwn1v": {
-      "hash": "47f8eed69be5a1f88a057bf20d4a51e65860fcbd25df4657c126d8cdf6ff49ad",
+      "hash": "59cbf83c015210ecec55902b8773842a303d36ee98061b748180d58e4c4fd6e6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rPRzwB": {
-      "hash": "11116c0cf038253b589c51efb98cc1e9de22fc1c8c2480b514804806596a81a0",
+      "hash": "a399ef2f21fa0f9bb8847ca0817506d85805653b9e979ebdcde0f206f6ac0d85",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "riDQl0": {
-      "hash": "8ac80c02c74989ab1e3d4fa1964956430c2955a75b5963617e3a3f3118779778",
+      "hash": "0c35fc1c9ddd7e8e5d589d828e1254beeeafd39e4e12a920d1eba2a80bef0465",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rA91rq": {
       "hash": "7cd36777fee1c773ab19e37d385ba6bfcc32a582e5540be617d2e8fa3025decd",
@@ -861,9 +861,9 @@
       "last_changed": null
     },
     "rWncQj": {
-      "hash": "325cac95bcf3150bea4d0821dcd527ad9181a3a357aa2f49a55e69b90d2eea1a",
+      "hash": "e9cfd9d780a30e3e60d89d02a89143775e7c7c16017351578b567fa1ad742219",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "roHR7q": {
       "hash": "68fd9cc076975c42763416903f659240ff644032abe3b0fb1e77073852135940",
@@ -876,39 +876,39 @@
       "last_changed": null
     },
     "rUJA5D": {
-      "hash": "09df83fea4d1a9ecb9c70d0e7e1bed9802fda7d331ab5d36d41322329523f8c1",
+      "hash": "85a4786918995309592b8a34db2ca9515f3854c157e88097cabfe2828bb6406a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rRdhzD": {
-      "hash": "f7fcd01722c8533fd03e53bb1662e93ac29812629de8aa922255257ca931cefe",
+      "hash": "d185c2a574ca2cf8ebbf29c11855874cd988e1f5e0fb80178f79ee26b7e93bee",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rkzqyY": {
-      "hash": "98d00824aca11acfeda7445bec51139b41284652a2bc7d5d386f504c22c73598",
+      "hash": "3b8ad0bf5e13b15c759377af33b0a89179daa9f04dab3f714a49aff2c46bafdb",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rFg2FP": {
-      "hash": "37fd074e27e6535b52995b75fb351c8ef1bb83b08c2a4314c2e85a110487dbfb",
+      "hash": "953a83b5e7ce0bda0f3718223f17f72dfa2d531caff31fb95daaa92ca21b4643",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rGXNtz": {
-      "hash": "ee5981ec3ec17da42c5eb21d177b89091533b9c56afe246ee601f04d82090255",
+      "hash": "032b80c5a640d0efa431d8ee13c476f826e5227ebc0081c8b468638836f75864",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rK72qD": {
-      "hash": "e5d1cf5dee6ab31241db53a0d3aae2346a49d20b42ae29685ffa34566319fc54",
+      "hash": "c511c6662d089685cf78ee9cb943718aeff8b45dc6d04e0fab537c4336bb0626",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rQMNeb": {
-      "hash": "7d0e4b52649b8881d9be8db100d7a72356e53ead1be96b9184787cf0b4268304",
+      "hash": "59706d749c3f5e5f4398749078d34f80e5464a1f15cf30a865f8c3ea562725ba",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rKM9vL": {
       "hash": "dfa037abefd2b74de0340b9e7b89aef16ca3145e92c03219c0cdb91e1133e7d2",
@@ -916,19 +916,19 @@
       "last_changed": null
     },
     "rXJwY1": {
-      "hash": "349e3e480e657ed32552c77a115f55b0d76ffe47b886d3b54ad4f7ec88230282",
+      "hash": "9673f2e985a551c2dbef4a4aab1c1dcc9ccb5e80f2e0666800f0f185110c8bf7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r6P2Uh": {
-      "hash": "2abfba208a03a2d0e47edc98f4f469b338aeb53908e6e3813933f4a2c16ef8f4",
+      "hash": "ab603c2b20d6530a7e1b25de6b58992856569294e7e10619d5f75bf221ae5cd2",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rX6N2z": {
-      "hash": "64f2ff299094d87da64d91be7b10743d77f578fb34659a23cc20d7e8579d4739",
+      "hash": "c52298b9d9e7ed2c32a2251fb36e592d48887e53ffeb7fde482076e3ab2b13ce",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rne6pV": {
       "hash": "70c599c166180007b94c4812606873181bcccb39f008505750c9c636dc9a8fda",
@@ -961,334 +961,334 @@
       "last_changed": null
     },
     "rumsNG": {
-      "hash": "b591db823f9bd5c9962995f6fc166747e969419e4c4b45d2a6c156ce211dc566",
+      "hash": "14fc1c584ee7b7511f8c069bb6f46265cb527cd4d956beed6d76890e2c4e3de8",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rRC0xx": {
-      "hash": "a04d21ed1634e10fb4c47cf9e1caa676a82d7852f48d56b4944a81257d6ef558",
+      "hash": "ea36145a3342d2069b92e1813f18ace1063d7047b391f3526c043f019cff846b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rCuDr4": {
-      "hash": "1d408bc18c6ea2ca584a2d836161940fffc6caf32beae7f8bee1bdbbdb868199",
+      "hash": "13e55b343e54747e2c41a1c064b04a9a5f6dfcd1a5e863a5d5d658d510ce395d",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rGnnVf": {
-      "hash": "27bf28729c4f2d59c44869f8c56d435deec98687e441249de04c8dc9e57a9259",
+      "hash": "c35c4d1689ce9dcc3addeb5b318ce84d494e0cb26cc67e1dfcbffd921bee7ad4",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rToMbs": {
-      "hash": "64ea985c15043f3206a6e4a8a09f157e7cd9ee6cff17127fb94ee08aa3808292",
+      "hash": "8c08f5bc51760fcf6b7e14233b3346aba8da21bcbc9cbec7945d75157a4ebab6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rxZTJl": {
-      "hash": "70cbc331b64684ebc354d6e62db908385a89458fbf812b6d5c5e76d2fb3525df",
+      "hash": "42ba522efa72a0d048599a422cbddd3a213c143aee91433adf2315ec75943b20",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rqrPa1": {
-      "hash": "a4c5a297fdb059fa188d3899841e4f13e77e211b3e707d6e110dbaa31d466380",
+      "hash": "b96551232446d9206a0789929a2a1d7f721c14bf1657af34e67a5698492b189c",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "ruxsjs": {
-      "hash": "9410e58cfec399b9e21bc51e9b4d00c0f0e59516f388fc487544b0dd3838efe3",
+      "hash": "79b278d7413905a7780b5e4a846ed56bc4777bc298e9332a03270c16e482d40a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rZex2w": {
-      "hash": "f56f2e7d24986ad4fd9aa748070600ad6c62e7bded1b6eb86e795c506d3e7eb6",
+      "hash": "97962f8797cb7f99fbc1fac44630cd158eb3ace16c50180920525b5e84ad7d72",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rsQxBu": {
-      "hash": "fd58b8d98464273fe70a66873872ffbb1f5fc6890d32f7504f8a0ddef7f4346a",
+      "hash": "7b017be53e759b6a64d1e88cff65301fc299e744656bf52340e89e124b48a499",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rlAA2a": {
-      "hash": "f81afea840011f4333820a553f8483281dfff2466cb1128b1f2a0ca2ce797fea",
+      "hash": "fe5f92ec2419bcf626b35f635fadd1bba82b41b839df7e5530fa6124e0f578fe",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rDNoFL": {
-      "hash": "f2979a6ad81b68aa9aeebf007417e102947e818fdb1ded2732c1d85ff7a4cff6",
+      "hash": "0e3c5a5c51966cc4b02dce4be5b0330eec9b9f6161db53708c220e0a04d3087e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rCbqar": {
-      "hash": "89dfcefdc7eb5a2376f5a3120af0fdd70ce57b469eacdacc59d5a7bf38238d30",
+      "hash": "ff7c7b84bbddc041c7ad7894af8d35abf26e5d38641dfd8932c764631d5d32d5",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rKy3w6": {
-      "hash": "ea799327e13e08ddda932172b670e7dd5ca6b92d31bbf748cd7a8739f42048f6",
+      "hash": "ac25747cd93c0e1d480f926870329e746ee918be9b8fbc6392d1f3be93ec5969",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rBszkb": {
-      "hash": "961fa16d15f98f3378b72655fb6e5b55d34f37878c3c051946b08120afa28830",
+      "hash": "63da3dd889f8d3d406b4b2d1773307f21cd9011f7b16368408c9ad6551ecc128",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rj9qLY": {
-      "hash": "590615a0ae53bd93ce9636fabbaf06400f1544325fabfa4025c43ddd4f00b42e",
+      "hash": "237a6f310057698923dda43060b2540f8121f8f503032370a22ef17870175ac3",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rwrUYl": {
-      "hash": "9ef9830c125fab54b34965e5403457cfb729aaebc83ceee20e4d834e459e3d35",
+      "hash": "2382d8d6fac0534736882e2660934dd6c75f4af33f7731b1cc439960289d110f",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rOAfUk": {
-      "hash": "3f483787c66e515b414aca2f9bbfaf1b9199c76ba26c5d12a7cddd39806daf40",
+      "hash": "89868a9cf3589365a9699a05f8b96a40408cdc9cf393ae43d0068ed68d50c954",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rInAKF": {
-      "hash": "63bc76c8ea1739db88a8edd9d8f31ee84dc6c979498ee5eca54a59859df7fcbc",
+      "hash": "99490322e33afa0690fdfbc5fcb02894e9f571d1f2947e6605e9f6da5a5ce013",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rID5qE": {
-      "hash": "e30a7a0d86063e9f928b52f4e4bca04932e5bd32ab0f1de4c6f0e9caadf8ab08",
+      "hash": "3c2eedaf84f0370e3b112662bcb261bfa83434f3c986268cf43a54ce485033d4",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rWcZVl": {
-      "hash": "add20a1f707ca13be4469716e06ad075673078c2d4e5e09b269256679afb4a1d",
+      "hash": "209e7718f79f141ca7034dfde4596930c957eb437cecbfa21db8e05f14462e21",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rwuw2Q": {
-      "hash": "7ff5322d092287c8c74fa2d5f828f8024d4a71020e28f28d31971e370d2389fb",
+      "hash": "1c1a46eccb6333b67d9bc552888d1b82a7bc8d08a3f880d09a61f30313af4d42",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rkhQbM": {
-      "hash": "9a1c244c34d3747d66e97d66bcd4538572f68142889385dc050b9b307a4ba5ab",
+      "hash": "ce93b536e78b1b539908aa68181a95dd0bcf1cb6abaefc252fef693c445cf713",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rP3RJu": {
-      "hash": "22952bdf8ac9f005058dce23364e2529ef430f23dab78971cedc7c22bd1ddfbe",
+      "hash": "719a064bc579bb432007adfc888787b95893aff45cedf1236457b039ef8a713a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rmXh45": {
-      "hash": "ca120a8f181f98a38338c7fa8696e983118cad6d66b562c7f7ee7bf8fa13cc33",
+      "hash": "e721c89987d1bed992b46620383d7c85e5f2b3fe235ae1028f2ec1ee7458bd5b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r5QQzl": {
-      "hash": "5d7d8e214851d62e1af0da7430618904edfb9d0179d01e4af6cd1aefbdec5593",
+      "hash": "a4ad6f261276b1b96b0afcd1abc9ff80fddb32f73a71cb5d9aef44bc9c0e9470",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rw9jxC": {
-      "hash": "5ae9f87df3196ae7fd655510d2c9c0c418143697dc46c49458ee4f93cbd3f26a",
+      "hash": "183e5a5be4c11a353a9ce13168f5bd9a9138773d943d36d49b004187b403014a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rY7hkl": {
-      "hash": "076f1ddf9d82f0feb7fc33b0abc33b0e62510002731bc7ba36e28f06fd39816e",
+      "hash": "40eb5d39c582249b837f7082675ef95c3a2eacef54296fb68629f3d4bc8894c5",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r9F224": {
-      "hash": "0f3dc858f8510da2296ba729de3f217377cdbc78915bdbbedc162db7324fccbd",
+      "hash": "6153465047cdfe71431e1bbe67bfe4a2426e90300cb073ffc032ae50368af319",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rGGnGL": {
-      "hash": "0d345a2ae53e253504a17d6c5e0075e072ad1fb68b2d12a04002654bc022b143",
+      "hash": "4cf215be7017648ca06e68cecd7208995e3f3d7e8a06ddae0ad8f83ab036ad8a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rINZ58": {
-      "hash": "2f7dd1cd10d3f46ca79637ac9ce17bdb35c7f2c82a812cf540ae18ac4e730c23",
+      "hash": "1baf2c62e293d799e4eb4f0aab3e15c9188cbe90883770ab1f9a187e4ff5ba69",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rjM3r9": {
-      "hash": "6d1db6ffb049fde6fa8637683a423017fd8428ea0ab44ee865268c7681e6dd42",
+      "hash": "82d52b62283afb535f8d389047da334819aa06cf46ed486230971309e5763c2a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rpPqfQ": {
-      "hash": "a2ee71fac00fdcb7bb322031e8205c5b396aab7b0cac9070e9a223e32030796d",
+      "hash": "5d88f8d7bc5ceb133a1c164d71eb93434e0d69f7b9d2914ea2bcfb1add68dc84",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rWMPww": {
-      "hash": "ec9a41498a7ea5cd7428c3de572682b033787e4e3d7e77c861881365a8f8c0ed",
+      "hash": "92d6da9643033e9c21e7b4d0aeba87572d7e1280eb6f115dad6e8987a1d9248b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rqoFiK": {
-      "hash": "ae1557267b63b8d9b6b32ca38e536e1321b7854257a30b90ead958209f131be1",
+      "hash": "19ee56d5cb650fd7fd3a4583cb7fd495fb3e9ce00bb3a7ed39ed82a1a75941a7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rJcLis": {
-      "hash": "e9839383d67b025dc1aa0c237eff21d6bd6e264492cf7e6fa003e62c69a4eddb",
+      "hash": "c8757ca25ad5aecb0cae091201b7ecc9d1b7ec03e92a246f2c709635ecd0281b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rEtSO6": {
-      "hash": "7a60194ce39e81d0487810cfc486600356a0c802f0280072bd3192224a72e087",
+      "hash": "e67d033ae93d7944827ba6564d87155f79037576963ddc8c04358570290d5bd6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r2cvZ6": {
-      "hash": "74c010770c579bca95a660ea00edd59341c1dfeb861c0253213f075caeaafd3f",
+      "hash": "880478691e2e0279145dace69a16ce91433d5ccf39af3198b22dcc9f43348065",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rALleW": {
-      "hash": "62bda20b7b2cc4cdce19469c38f336a1ad642a16ec1667842a047796ecb74a04",
+      "hash": "c8c4279270b127eca9416021ca32ea52949e178d1a088619527e42285e84f918",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rQyJi7": {
-      "hash": "c9054085ac2b6b0f070edbe9ec2ffc16a0af75f64bb06c2fdd6766b54020038e",
+      "hash": "67819d1add4d88a7a81a4995c84c97c790435f3f77c6a0531ec31fea699e3396",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rvvSh0": {
-      "hash": "28847f2523f546df373f0e64084e86903f02f9e73c0483b006f00608b6c544e0",
+      "hash": "e630910c5dad455a5a1a640e79397e09be2fe1651f8cfe67201b777f5525311f",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rjZXGG": {
-      "hash": "e6558542e3629c74ba1eb6c344d29c168ba9f3b3ca9385774293e0a491aec859",
+      "hash": "e9706b7727adb06a986e328ef46add135ed3609bdc5dc63bd362ca4b00dc7563",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rLOzRL": {
-      "hash": "003854bf0f16c8091ceb98d8dff01cab81aadda4c48d9ec70a837580704c9465",
+      "hash": "34d5a78bb6429af7480a588ca11c9aee0be47a70e03efe50288ed0bd7367dcd6",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rvZayf": {
-      "hash": "e4ccde012dbdf5cbaa096f88746f5dd1a8e583cce1d2dcc9b358b7c2f3e3c528",
+      "hash": "1152e3db5c723aa19616e1dbf23d1e0a3860cf542be6a94ed14f3ffe4fd03f93",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rBxWMw": {
-      "hash": "e4db53fbfd553545e6e55942efb8fe54da04b345297d350cb1ee61518eeb5d20",
+      "hash": "5ca8439ca57960d55463cf17220e9d0933b10fb923cdd00a2fda931a91b5cf04",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rbh6mZ": {
-      "hash": "1a06555847f9ebb3a94e62f69bddf4e042f634bcc6727f78caafe87ad73eb350",
+      "hash": "5cbd5c2835480de208de92341c644306a6f210b6ad9f9b0a4b7185e126da76dd",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r5LCxK": {
-      "hash": "dd7b85bc98f22a503e88f85bce39ffb1baf0fa0623a78ebe0be14102fb8b9a87",
+      "hash": "6808d55a38914dcf6915c71691b393b9cbe11713fc947354bebcfa04790f4c8b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rEy3kg": {
-      "hash": "9d4fb991bb08e6a1bb467af8be4316f4938089bcc36f71ed43758f0cd406f6c1",
+      "hash": "19bc7e144de19129088df2280b24bcfb83c3fea07883441ba96bf0e6e1921197",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rEThh1": {
-      "hash": "26420e88b5b4ed18081bdd55f3f068591408e12b9084c00837517fee3bc46940",
+      "hash": "51712a093d87a9a5aa1bcd87b8d4fb470a87ec5f79240966f6e01847510e6e2e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rMAlCt": {
-      "hash": "6392934648d55bf956d9d95249624e6f7a165977ba3eac34fabd8f488610f6ee",
+      "hash": "681c6867b744e9821e26ffbd895de73510ef224e2395fb260bf0b56b5b2c8ce7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r1bPB3": {
-      "hash": "1d1296324f6726d1c2edced274b518c6b911782692f4507461ce2a14ba9eeb13",
+      "hash": "f6ae0722fa968f4d25928bf94a27d4e500854adab630cffd33e66363bf94dff0",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rOJUFP": {
-      "hash": "1627fe5914b7af291ffc9da3af7f0eb8930b5c7defd52fec04dc747749ac2f08",
+      "hash": "34b7104c44d0521cdc1da3e5b9d5f614bfbc49fed9a6c411494e80d5f6d0d3ee",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rN6XtR": {
-      "hash": "7bd18e8ef8852d4255b306b2225c4ff3a6ca655a1971a95ad9c60bdbd8fe9fe1",
+      "hash": "c223f0ac36c66fa817ad1a4235a05231a3e24618061463fd34fbb2099417e21a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "ru9iVj": {
-      "hash": "635ed47319a3399071bd3cb12b13d3fd87ddcadeab509977a0236df56d0c3e86",
+      "hash": "2845828b3c7c4f5ce678a6c0ca777762140351337255d89748d2fa62182622b5",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rUhabR": {
-      "hash": "9364506b005b96aa0bb0c8dd4883782b82b34f7619893b0e64e6d5590dd2bf6e",
+      "hash": "001fd4a46a55a100a427906dfdb4b12a4c3a7094e71f0bab908e468f3fba6889",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rNfiav": {
-      "hash": "660c7cf28925968ccee591cc97c995f6a7ccfb51363a16cafb8ffda465ff4387",
+      "hash": "f5b2ffb313f33e00ad6b6bb66b3761defa20b80ec918e0435a0259176d96cd0b",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rQFTSP": {
-      "hash": "978932c49656bf9bafe34e8621a24acfbb93075905f6271064ae5b9d971cfc7e",
+      "hash": "6959f26f16e818eec2742a802641dd79a0147a1a0055ee4f9951a99be4b72ef7",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rxtALc": {
-      "hash": "e8636e08eb604b8676606eade3afc210aa2600caca562ab9e20fb497a5923565",
+      "hash": "f047cb6cea7cff2be5d489e5f796c122b755018f29ee35390bc2c2757a765bf0",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rmKty0": {
-      "hash": "55e60412aad958f68540f12bcbc86cf929ec26c160b39e974572476449062982",
+      "hash": "d2f1450626ecdeaa5f19fee339f32d508032825283abc7aeaffbdf2a3f7b1d9a",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rxGurV": {
-      "hash": "fd201cc16390911cc48d7681289ac74f5ab1703a646d0a99d45fbef8706f82e2",
+      "hash": "fe3f174d44e10c78e0707ce0b5b87d2cba3716ae5b9c1f896a2dd8bcf9f7c77e",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "riqt1F": {
-      "hash": "d6760a2b438112bf9594018db9f2a113b571c7a4bd6ba5fe35059f499ac78f94",
+      "hash": "987e4efb589da35ca50a597353f6e4363a9e88ea9d70ae348df26fd7222cf32d",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r6z5NP": {
-      "hash": "98e3ca56d438f08aff5a5feb0fe5687b0564cbd355d94af365f9f9dfee2debe5",
+      "hash": "a97b7e7485114d49f42d75d0e5988e56448296d9539c9cfc6dda15cf699b5910",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rkhr5d": {
-      "hash": "c2d86f6370a6a51fe96529383227f1d5a07e142e237019c69b4c1b25d859928c",
+      "hash": "bd2a4ffaee71b289b3a0bd1de158b7260d4946f58b162cc2cd519879bf4ff44f",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rePnhH": {
-      "hash": "d1da166a4c9494c6d0e15198c22d4eedc0407b3f55e3243fea2b00ca3cba1ddb",
+      "hash": "9c443d4e4be641fdaeafd3141bbb14e2919f3633fc977d4b0aa41720f9e27352",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "r3zyxS": {
-      "hash": "0c088940ff8d36cc98b83a329ddac7f3ca8bcfe60913fd6b4eff26708e1fed3d",
+      "hash": "f5970dcf7e69c69a45bfd12f30aa453931309221d29a94c1f0648d36dd32e170",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "rBz63h": {
-      "hash": "8282c8379c763487b33cafcc16ec72954c46a2c433c1f2f91982bbc9e1159a5a",
+      "hash": "6050572ee88079f0141af9170aeaf7f29d578e1e0fc5867f1cffee15d90f459c",
       "first_seen": "2026-07-25",
-      "last_changed": "2026-10-20"
+      "last_changed": "2026-10-21"
     },
     "re9LJF": {
       "hash": "597c4db36a2ff83a53970bbc94496f4c5a2f5353080b60dfcbef23b39e011852",
